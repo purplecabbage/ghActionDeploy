@@ -1,5 +1,4 @@
-name: AIO App CI
-
+name: AIO App CI pr test
 on: [pull_request]
 jobs:
   test:
@@ -7,7 +6,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: ['12']
+        node-version: ['16']
         os: [macOS-latest, ubuntu-latest, windows-latest]
     steps:
       - name: Checkout
@@ -22,7 +21,7 @@ jobs:
         uses: adobe/aio-cli-setup-action@1.1.0
         with:
           os: ${{ matrix.os }}
-          version: 8.x.x
+          version: 9.x
       - name: Auth
         uses: adobe/aio-apps-action@2.0.1
         with:
